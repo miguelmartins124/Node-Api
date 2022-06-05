@@ -1,0 +1,565 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Trabalho PSD-08",
+    "version": "v4"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5010"
+    },
+    {
+      "url": "http://localhost:5020"
+    }
+  ],
+  "tags": [
+    {
+      "name": "EECS",
+      "description": "Tudo acerca das entradas e saidas (PORT: 5010)"
+    },
+    {
+      "name": "Parques",
+      "description": "Tudo acerca dos parques (PORT: 5010)"
+    },
+    {
+      "name": "Clientes",
+      "description": "Tudo acerca dos clientes (PORT: 5020)"
+    }
+  ],
+  "paths": {
+    "/eecs/entrada": {
+      "get": {
+        "tags": [
+          "EECS"
+        ],
+        "description": "Apresentar todas as entradas",
+        "responses": {
+          "200": {
+            "description": "todas as entradas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/objEntradaResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "EECS"
+        ],
+        "description": "Criar uma nova entrada",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/objEntradaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Nova entrada criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/objEntradaResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eecs/{matricula}": {
+      "delete": {
+        "tags": [
+          "EECS"
+        ],
+        "description": "Apagar uma entrada",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "[a-zA-Z0-0]+"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Entrada apagada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/objEntradaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400BadRequest"
+          },
+          "404": {
+            "description": "entrada não encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "id da entrada não encontrado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eecs/saida": {
+      "get": {
+        "tags": [
+          "EECS"
+        ],
+        "description": "Apresentar todas as saídas",
+        "responses": {
+          "200": {
+            "description": "todas as saídas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/objSaidaResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "EECS"
+        ],
+        "description": "Registar uma nova saída",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/objSaidaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Nova saída efetuada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/objSaidaResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pe/parques": {
+      "get": {
+        "tags": [
+          "Parques"
+        ],
+        "description": "Apresentar todos os parques",
+        "responses": {
+          "200": {
+            "description": "todos os parques",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/objParquesResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Parques"
+        ],
+        "description": "Criar um novo parque",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/objParquesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Novo parque criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/objParquesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400BadRequest"
+          }
+        }
+      }
+    },
+    "/clientes": {
+      "get": {
+        "tags": [
+          "Clientes"
+        ],
+        "description": "Apresentar todos os clientes",
+        "responses": {
+          "200": {
+            "description": "todos os clientes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/objClientesResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Clientes"
+        ],
+        "description": "Criar um novo parque",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/objClientesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Novo cliente criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/objClientesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400BadRequest"
+          }
+        }
+      }
+    },
+    "/clientes/{id}": {
+      "put": {
+        "tags": [
+          "Clientes"
+        ],
+        "summary": "alterar os dados de um cliente o ID",
+        "description": "Permite alterar os dados de um cliente com o ID, nomeadamente o nome, a situação da avença, a matricula do seu veiculo e o seu email.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "[a-zA-Z0-0]+"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Objecto Cliente com o dados a substituir...",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/objClientesAtualizarRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucesso na alteração dos dados",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/objClientesAtualizarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400BadRequest"
+          },
+          "404": {
+            "description": "cliente com o ID não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "id do cliente não encontrado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "objEntradaRequest": {
+        "type": "object",
+        "properties": {
+          "Nparque": {
+            "type": "number"
+          },
+          "matricula": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "objEntradaResponse": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "Nparque": {
+            "type": "number"
+          },
+          "matricula": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "format": "date"
+          },
+          "Created_data": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "objSaidaRequest": {
+        "type": "object",
+        "properties": {
+          "matriculaSaidas": {
+            "type": "string"
+          }
+        }
+      },
+      "objSaidaResponse": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "matriculaSaidas": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "format": "date"
+          },
+          "Created_data": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "objParquesRequest": {
+        "type": "object",
+        "properties": {
+          "Numero_parque": {
+            "type": "number"
+          },
+          "Numero_lugares_normais": {
+            "type": "number"
+          },
+          "Numero_lugares_cadeira": {
+            "type": "number"
+          },
+          "preco": {
+            "type": "number"
+          },
+          "data": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "objParquesResponse": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "Numero_parque": {
+            "type": "number"
+          },
+          "Numero_lugares_normais": {
+            "type": "number"
+          },
+          "Numero_lugares_cadeira": {
+            "type": "number"
+          },
+          "preco": {
+            "type": "number"
+          },
+          "data": {
+            "type": "string",
+            "format": "date"
+          },
+          "Created_data": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "objClientesRequest": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "avenca": {
+            "type": "string"
+          },
+          "matriculaVeiculoPessoal": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "objClientesResponse": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "avenca": {
+            "type": "string"
+          },
+          "matriculaVeiculoPessoal": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "format": "date"
+          },
+          "Created_data": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "objClientesAtualizarRequest": {
+        "type": "object",
+        "required": [
+          "avenca"
+        ],
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "avenca": {
+            "type": "string"
+          },
+          "matriculaVeiculoPessoal": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "objClientesAtualizarResponse": {
+        "type": "object",
+        "required": [
+          "_id",
+          "designacao",
+          "created_date"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "avenca": {
+            "type": "string"
+          },
+          "matriculaVeiculoPessoal": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "Created_date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "responses": {
+      "400BadRequest": {
+        "description": "Bad request."
+      }
+    }
+  }
+}

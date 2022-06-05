@@ -1,0 +1,174 @@
+openapi: 3.0.0
+info:
+  title: "Trabalho PSD-08"
+  version: v3
+servers: 
+  - url: http://localhost:5010
+tags:
+- name: "EECS"
+  description: "acerca das entradas e saidas"
+- name: "Parques"
+  description: "acerca dos parques"
+paths:
+  /eecs/entrada: 
+    get:
+      tags:
+      - "EECS"
+      description: apresenta todas as entradas
+      responses:
+        200:
+          description: todas as entradas
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/objEntradaResponse'
+    post:
+      tags:
+      - "EECS"
+      description: Criar um nova entrada
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/objEntradaRequest'
+      responses:
+        '201':
+          description: Nova entrada criada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/objEntradaResponse'
+  
+  /eecs/{matricula}:
+    delete:
+      tags:
+      - "EECS"
+      description: apagar uma entrada
+      parameters:
+        - name: matricula
+          in: path
+          required: true
+          schema: 
+            type: string
+            pattern: '[a-zA-Z0-0]+'
+            # Example: 123
+      responses:
+        '201':
+          description: Entrada apagada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/objEntradaResponse'
+        '404': 
+          description: entrada não encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    type: string
+                    example: "id da entrada não encontrado"
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+
+
+  /pe/parques:
+    get:
+      tags:
+      - "Parques"
+      description: apresenta todos os parques
+      responses:
+        200:
+          description: todos os parques
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/objParquesResponse'
+    post:
+      tags:
+      - "Parques"
+      description: Criar um novo parque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/objParquesRequest'
+      responses:
+        '201':
+          description: Novo parque criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/objParquesResponse'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+  
+components:
+  schemas:
+    objEntradaRequest:
+      type: object
+      properties:
+        Nparque:
+          type: number
+        matricula: 
+          type: string 
+        data: 
+          type: string
+          format: date
+    objEntradaResponse:
+      type: object
+      properties:
+        _id:
+          type: string
+        Nparque:
+          type: number
+        matricula: 
+          type: string 
+        data: 
+          type: string
+          format: date
+        Created_data: 
+          type: string
+          format: date-time
+    objParquesRequest:
+      type: object
+      properties:
+        Numero_parque:
+          type: number
+        Numero_lugares_normais:
+          type: number
+        Numero_lugares_cadeira:
+          type: number
+        preco:
+          type: number
+        data: 
+          type: string
+          format: date
+    objParquesResponse:
+      type: object
+      properties:
+        _id:
+          type: string
+        Numero_parque:
+          type: number
+        Numero_lugares_normais:
+          type: number
+        Numero_lugares_cadeira:
+          type: number
+        preco:
+          type: number 
+        data: 
+          type: string
+          format: date
+        Created_data: 
+          type: string
+          format: date-time    
+    
+  responses:
+      400BadRequest:       # Can be referenced as '#/components/responses/400BadRequest'
+        description: Bad request.

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parque de estacionamento</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body style="background-color:#2196f3;">
+<br>
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+    <a class="navbar-brand" href="#"> <img src="data:image/png;base64,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" Style="height: 60px; width: 100px;"  ></a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+        </li>
+    </ul>
+</nav>
+
+<div class="grid-container">
+    <div class="grid-item">
+
+
+
+<u style="color:black" class="labeltitulo">Novo Cliente:</u>
+<br><br>
+<form method="post" action="/clientes">
+    <label class="label"  for="nome" style="color:black">Nome do cliente:</label><br>
+    <input class="input" type="text" id="nome" name="nome" placeholder="nome"><br>
+    <br>
+    <label class="label"  for="avenca" style="color:black">Cliente possui avença válida ou inválida?</label><br>
+    <input class="input" type="text" id="avenca" name="avenca"  placeholder="1-Válida/0-Inválida"><br>
+    <br>
+    <label class="label"  for="matriculaVeiculoPessoal" style="color:black">Matricula do veiculo do cliente:</label><br>
+    <input class="input" type="text" id="matriculaVeiculoPessoal" name="matriculaVeiculoPessoal"  placeholder="Exemplo AA-00-BB"><br>
+    <br>
+    <label class="label"  for="email" style="color:black">Email do cliente:</label><br>
+    <input class="input" type="text" id="email" name="email"  placeholder="Exemplo abc@gmail.com"><br>
+    <br>
+    <button id="btnClientes" style="color:black" class="btn">Novo Cliente</button>
+</form>
+</div>
+
+
+    <div class="grid-item">
+    <form method="post" action="/clientes/obterInfo">
+        <label  class="label" for="matriculaAvenca" style="color:black">Digite matricula: </label><br>
+        <input   type="text" class="input" id="matriculaAvenca"style="color:black" name="matriculaAvenca"><br>
+        <br>
+        <button class="btn"> Procurar </button>
+    </form>
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+
+</script>
+
+<style>
+    .buttonClass {
+        font-size:15px;
+        font-family:Arial;
+        width:140px;
+        height:50px;
+        border-width:0px;
+        color:#fff;
+        border-color:#18ab29;
+        font-weight:bold;
+        border-top-right-radius:28px;
+        border-bottom-left-radius:28px;
+        text-shadow: 1px 1px 0px #2f6627;
+        background:rgba(74, 144, 226, 1);
+        margin-right: 15px;
+    }
+
+    .buttonClass:hover {
+        background: #243A73;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        background-color: #2196F3;
+        padding: 10px;
+        margin-top: 100px;
+        grid-gap: 30px;
+    }
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+
+    .form{
+        position: relative;
+        display: inline-block;
+        height: 100%;
+        max-width: 700px;
+        min-width: 500px;
+        box-sizing: border-box;
+        padding: 30px 25px;
+        background-color: white;
+        border-radius: 40px;
+        margin: 40px 0;
+
+    }
+
+    .btn {
+        font-family: Hack, monospace;
+        background: #bbff00;
+        color: #1d1d1d;
+        cursor: pointer;
+        font-size: 2em;
+        padding: 1.5rem;
+        border: 0;
+        transition: all 0.5s;
+        border-radius: 10px;
+        width: auto;
+        position: relative;
+        min-width: 40px;
+        font-size: 16px;
+        margin-top: 13px;
+    }
+    .btn:after {
+        content: "\f2sf6";
+        font-family: "Font Awesome 5 Pro";
+        font-weight: 400;
+        position: absolute;
+        left: 80%;
+        top: 54%;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+
+    }
+
+    .btn:hover {
+        background: #2b2bff;
+        transition: all 0.5s;
+        border-radius: 10px;
+        box-shadow: 0px 6px 15px #0000ff61;
+        padding: 1.5rem 3rem 1.5rem 1.5rem;
+        color: #ffffff;
+
+
+    }
+
+    .input{
+
+        border-radius: 13px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
+        width: 247px;
+        box-shadow: 8px 6px 4px 6px rgb(38 127 255 / 30%);
+    }
+
+    .label {
+
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.065rem;
+        font-style: italic;
+        text-transform: capitalize;
+        color: #000000;
+        background-color: #ffffff;
+        border-radius: 2.25rem;
+        -webkit-border-radius: 2.25rem;
+        -moz-border-radius: 2.25rem;
+        padding: 0.35rem 0.75rem;
+        border-style: dashed;
+        border-width: 0.1875rem;
+        border-color: #3c7ff0;
+        -webkit-box-shadow: 16px 0px 6px -1px rgba(164,0,209,0.53);
+        -moz-box-shadow: 16px 0px 6px -1px rgba(164,0,209,0.53);
+        -box-shadow: 16px 0px 6px -1px rgba(164,0,209,0.53);
+        padding-bottom: 2px;
+
+    }
+
+    .labeltitulo {
+
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: 0.065rem;
+        font-style: italic;
+        text-transform: capitalize;
+        color: #000000;
+        background-color: #ffffff;
+        border-radius: 2.25rem;
+        -webkit-border-radius: 2.25rem;
+        -moz-border-radius: 2.25rem;
+        padding: 0.35rem 0.75rem;
+        border-style: groove;
+        border-width: 0.1875rem;
+        border-color: #3c7ff0;
+        -webkit-box-shadow: 6px 0px 6px -1px rgba(164,0,209,0.53);
+        -moz-box-shadow: 6px 0px 6px -1px rgba(164,0,209,0.53);
+        -box-shadow: 6px 0px 6px -1px rgba(164,0,209,0.53);
+
+    }
+
+</style>
+
+</body>
+</html>

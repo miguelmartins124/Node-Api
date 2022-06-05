@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Novo Parque</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</head>
+<body style="background-color:#2196f3;" >
+<br>
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+    <a class="navbar-brand" href="#"> <img src="data:image/png;base64,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" Style="height: 60px; width: 100px;"  ></a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <form method="get" action="/pe">
+            <button class="buttonClass">Novo Parque</button>
+    </form>
+      </li>
+      <li class="nav-item">
+        <form method="get" action="/tabelas">
+          <button class="buttonClass"> Tabelas</button>
+        </form>
+      </li>
+  
+      <li class="nav-item">
+      <form method="get" action="/eecs">
+        <button class="buttonClass">Registar entradas/saidas</button>
+    </form>
+     </li>
+    </ul>
+  </nav>
+
+
+  <div class="grid-container">
+    <div class="grid-item">
+
+<u style="color:black" class="labeltitulo" >Novo Parque:</u>
+<br><br>
+<form method="post" action="/pe/parques">
+    <label  class="label" for="Numero_parque" style="color:black">Nº do parque:</label><br>
+    <input type="number" id="Numero_parque" name="Numero_parque" required min="1" max="6" class="input"  placeholder="Nº do parque"><br>
+    <br>
+    <label class="label" for="status"  style="color:black;">Status Parque:</label><br>
+    <input type="text" id="status"  name="status" required min="1" max="2" class="input" placeholder="Status Parque"><br>
+    <p id="demo"></p>
+    <br>
+    <label class="label" for="Numero_lugares_normais" style="color:black">Nº lugares normais:</label><br>
+    <input type="text" id="Numero_lugares_normais" name="Numero_lugares_normais" class="input" placeholder="Nº de lugares normais"><br>
+    <br>
+    <label class="label" for="Numero_lugares_cadeira" style="color:black">Nº lugares de mobilidade reduzida:</label><br>
+    <input type="text" id="Numero_lugares_cadeira" class="input" name="Numero_lugares_cadeira"  placeholder="Nº lugares de mobilidade reduzida"><br>
+    <br>
+    <label class="label" for="Total_lugares" style="color:black">Total de lugares:</label><br>
+    <input type="text" id="Total_lugares" class="input" name="Total_lugares"  placeholder="Total de lugares"><br>
+    <br>
+    <label class="label" for="Lugares_disponiveis" style="color:black">Lugares disponiveis:</label><br>
+    <input type="text" id="Lugares_disponiveis" class="input" name="Lugares_disponiveis"  placeholder="Lugares disponiveis"><br>
+    <br>
+ 
+
+    <button class="btn" onclick="validatecampo">Registar Entrada </button>
+
+</form>
+</div>
+
+
+
+<div class="grid-item"> 
+<u style="color:black" class="labeltitulo">Atualizar Status parque</u>
+<br><br>
+<form method="post" action="/pe/update">
+    <label  class="label" for="Numero_parque_statusUpdate" style="color:black">Numero do parque a atualizar: </label><br>
+    <input   type="text" class="input" id="Numero_parque_statusUpdate"style="color:black" name="Numero_parque_statusUpdate"><br>
+    <label class="label" for="status_statusUpdate" class="input" style="color:black">STATUS do parque a atualizar:</label><br>
+    <input type="number" class="input" id="status_statusUpdate" name="status_statusUpdate" style="color:black"><br>
+
+    <br>
+    <button class="btn"> Atualizar Status Parque </button>
+</form>
+
+</div>
+
+
+
+<div class="grid-item">
+<u style="color:black" class="labeltitulo" >Atualizar Parques</u>
+<br><br>
+<form method="post" action="/pe/updateparque">
+   
+    
+        <label class="label" for="Numero_parque_updateParque" style="color:black">Numero do parque</label><br>
+        <input type="text" class="input" id="Numero_parque_updateParque" style="color:black" name="Numero_parque_updateParque">
+    
+    <br>
+   
+        <label class="label" for="Numero_lugares_normais_updateParque" style="color:black">Numero de lugares normais</label><br>
+        <input type="text"  class="input" id="Numero_lugares_normais_updateParque" style="color:black" name="Numero_lugares_normais_updateParque">
+   
+    <br>
+   
+        <label class="label" for="Numero_lugares_cadeira_updateParque" style="color:black">Numero de lugares de cadeira</label><br>
+        <input type="text" class="input" id="Numero_lugares_cadeira_updateParque" style="color:black" name="Numero_lugares_cadeira_updateParque">
+  
+    <br>
+    
+        <label class="label" for="Total_lugares_updateParque" style="color:black">Total de lugares:</label><br>
+        <input type="text" id="Total_lugares_updateParque" class="input" name="Total_lugares_updateParque"  placeholder="Total de lugares"><br>
+  
+    <br>
+    
+        <label class="label" for="Lugares_disponiveis_updateParque" style="color:black">Lugares disponiveis:</label><br>
+        <input type="text" id="Lugares_disponiveis_updateParque" class="input" name="Lugares_disponiveis_updateParque"  placeholder="Lugares disponiveis"><br>
+   
+    <br>
+    <button class="btn" type="submit">Atualizar</button>
+</form>
+</div>
+
+
+<div class="grid-item">
+    <form method="post" action="/pe/obterparque">
+        <label  class="label" for="Numero_parque_find" style="color:black">Pesquisar parque por Numero: </label><br>
+        <input   type="text" class="input" id="Numero_parque_find"style="color:black" name="Numero_parque_find"><br>
+
+
+        <br>
+        <button class="btn"> Procurar parque </button>
+    </form>
+
+</div>
+</div>
+
+
+
+<script> 
+function validatecampo() {
+  const inpObj = document.getElementById("status");
+  if (!inpObj.checkValidity()) {
+    document.getElementById("demo").innerHTML = inpObj.validationMessage;
+  } else {
+    document.getElementById("demo").innerHTML = "Input OK";
+  } 
+} 
+
+function validatecampo2() {
+  const inpObj = document.getElementById("Numero_parque");
+  if (!inpObj.checkValidity()) {
+    document.getElementById("demo").innerHTML = inpObj.validationMessage;
+  } else {
+    document.getElementById("demo").innerHTML = "Input OK";
+  } 
+} 
+
+
+
+
+   function getdata(){
+
+    fetch('http://localhost:5010/pe/parques')
+  .then(response => response.json())
+  .then(data => buildTable(data));
+
+   }
+
+	function buildTable(data){
+		var table = document.getElementById('myTable')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i].Numero_parque}</td>
+							<td>${data[i].Numero_lugares_normais}</td>
+							
+					  </tr>`
+			table.innerHTML += row
+
+		}
+	}
+
+</script>
+
+
+<style>
+.buttonClass {
+  font-size:15px;
+  font-family:Arial;
+  width:140px;
+  height:50px;
+  border-width:0px;
+  color:#fff;
+  border-color:#18ab29;
+  font-weight:bold;
+  border-top-right-radius:28px;
+  border-bottom-left-radius:28px;
+  text-shadow: 1px 1px 0px #2f6627;
+  background:rgba(74, 144, 226, 1);
+  margin-right: 15px;
+}
+
+.buttonClass:hover {
+  background: #243A73;
+}
+    
+       .grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+ margin-top: 100px; 
+ grid-gap: 30px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+
+    .form{
+        position: relative;
+            display: inline-block;
+            height: 100%;
+  max-width: 700px;
+  min-width: 500px;
+  box-sizing: border-box;
+  padding: 30px 25px;
+  background-color: white;
+  border-radius: 40px;
+  margin: 40px 0;
+  
+    }
+
+    .btn {
+    font-family: Hack, monospace;
+    background: #bbff00;
+    color: #1d1d1d;
+    cursor: pointer;
+    font-size: 2em;
+    padding: 1.5rem;
+    border: 0;
+    transition: all 0.5s;
+    border-radius: 10px;
+    width: auto;
+    position: relative;
+    min-width: 40px;
+    font-size: 16px;
+    margin-top: 13px;
+    }
+    .btn:after {
+        content: "\f2sf6";
+        font-family: "Font Awesome 5 Pro";
+        font-weight: 400;
+        position: absolute;
+        left: 80%;
+        top: 54%;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+
+    }
+
+    .btn:hover {
+        background: #2b2bff;
+        transition: all 0.5s;
+        border-radius: 10px;
+        box-shadow: 0px 6px 15px #0000ff61;
+        padding: 1.5rem 3rem 1.5rem 1.5rem;
+        color: #ffffff;
+
+        
+    }
+
+    .input{
+
+    border-radius: 13px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    width: 247px;
+    box-shadow: 8px 6px 4px 6px rgb(38 127 255 / 30%);
+    }
+
+    .label {
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.065rem;
+    font-style: italic;
+    text-transform: capitalize;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 2.25rem;
+    -webkit-border-radius: 2.25rem;
+    -moz-border-radius: 2.25rem;
+    padding: 0.35rem 0.75rem;
+    border-style: dashed;
+    border-width: 0.1875rem;
+    border-color: #3c7ff0;
+    -webkit-box-shadow: 16px 0px 6px -1px rgba(164,0,209,0.53);
+    -moz-box-shadow: 16px 0px 6px -1px rgba(164,0,209,0.53);
+    -box-shadow: 16px 0px 6px -1px rgba(164,0,209,0.53);
+    padding-bottom: 2px;
+
+}
+
+.labeltitulo {
+
+font-family: 'Roboto', sans-serif;
+font-size: 1.5rem;
+font-weight: 500;
+letter-spacing: 0.065rem;
+font-style: italic;
+text-transform: capitalize;
+color: #000000;
+background-color: #ffffff;
+border-radius: 2.25rem;
+-webkit-border-radius: 2.25rem;
+-moz-border-radius: 2.25rem;
+padding: 0.35rem 0.75rem;
+border-style: groove;
+border-width: 0.1875rem;
+border-color: #3c7ff0;
+-webkit-box-shadow: 6px 0px 6px -1px rgba(164,0,209,0.53);
+-moz-box-shadow: 6px 0px 6px -1px rgba(164,0,209,0.53);
+-box-shadow: 6px 0px 6px -1px rgba(164,0,209,0.53);
+
+}
+
+</style>
+</body>
+</html>

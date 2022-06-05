@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Tabelas</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body style="background-color:#2196f3;">
+
+
+
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+    <a class="navbar-brand" href="#"> <img src="data:image/png;base64,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" Style="height: 60px; width: 100px;"  ></a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <form method="get" action="/pe">
+                <button class="buttonClass">Novo Parque</button>
+            </form>
+        </li>
+        <li class="nav-item">
+            <form method="get" action="/precos">
+                <button class="buttonClass">Novos Preços</button>
+            </form>
+        </li>
+
+        <li class="nav-item">
+            <form method="get" action="/eecs">
+                <button class="buttonClass">Registar entradas/saidas</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+<br>
+<br>
+<br>
+
+<div class="grid-container">
+    <div class="grid-item">
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 20px;" width="30" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+        <input type="text" style="width:100%; margin-bottom:10px;" id="myInput"  onkeyup="filtertable()" placeholder=" Procurar Por numero parque.">
+        <table class="table table-striped">
+            <tr  class="bg-info" style="color:black; font-size: 20px;">
+                <th style="margin-left:30px;" >Nr parque</th>
+                <th>Total Lugares</th>
+                <th>Lugares Disponiveis</th>
+                <th> Status Parque</th>
+            </tr>
+            <tbody id="myTable" style="color:black; font-size: 15px; ">
+            </tbody>
+        </table>
+        <button class="btn" onclick="getdata()">Ver Parques</button>
+
+    </div>
+
+
+
+    <div class="grid-item">
+
+        <table class="table table-striped">
+            <tr  class="bg-info" style="color:black; font-size: 20px;">
+                <th style="margin-left:30px;" >Minutos</th>
+                <th>Preço</th>
+            </tr>
+
+            <tbody id="tabelaPrecario" style="color:black; font-size: 15px; ">
+
+            </tbody>
+        </table>
+        <button class="btn" onclick="getPrecario()">Ver Precario</button>
+    </div>
+
+
+
+    <div class="grid-item">
+
+        <table class="table table-striped">
+            <tr  class="bg-info" style="color:black; font-size: 20px;">
+                <th style="margin-left:30px;" >Nr parque</th>
+                <th>Status Parque</th>
+
+            </tr>
+
+            <tbody id="tabelasstatus" style="color:black; font-size: 15px; ">
+
+            </tbody>
+        </table>
+        <button class="btn" onclick="getdatativos()">Ver Parques Ativos</button>
+    </div>
+
+
+
+
+
+
+    <div class="grid-item">
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 20px;" width="30" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+        <input type="text" style="width:100%; margin-bottom:10px;" id="myInput2" onkeyup="filtertable2()" placeholder=" Procurar Por Matricula.">
+        <table class="table table-striped" id="table2">
+            <tr  class="bg-info" style="color:black; font-size: 20px;">
+                <th style="margin-left:30px;" >Parque</th>
+                <th>Matricula</th>
+                <th>Data Entrada</th>
+
+            </tr>
+
+            <tbody id="tabelaentradas" style="color:black; font-size: 15px; ">
+
+            </tbody>
+        </table>
+        <button class="btn" onclick="getentradas()">Ver Entradas</button>
+    </div>
+
+
+    <div class="grid-item">
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 20px;" width="30" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+        <input type="text" style="width:100%; margin-bottom:10px;" id="myInput3" onkeyup="filtertable3()" placeholder="Procurar por Matricula.">
+        <table class="table table-striped" id="table3">
+            <tr  class="bg-info" style="color:black; font-size: 20px;">
+                <th style="margin-left:30px;" >Matricula</th>
+                <th>Parque</th>
+                <th>Data Saída</th>
+            </tr>
+
+            <tbody id="tabelasaidas" style="color:black; font-size: 15px; ">
+
+            </tbody>
+        </table>
+        <button class="btn" onclick="getsaidas()">Ver Saídas</button>
+    </div>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<script>
+
+    function getdata(){
+
+        fetch('http://localhost:5010/pe/parques')
+            .then(response => response.json())
+            .then(data => buildTable(data));
+
+
+    }
+
+
+    function buildTable(data){
+        var table = document.getElementById('myTable')
+
+        for (var i = 0; i < data.length; i++){
+            var row = `<tr>
+                                 <td>${data[i].Numero_parque}</td>
+                                 <td>${data[i].Total_lugares}</td>
+                                 <td>${data[i].Lugares_disponiveis}</td>
+                                 <td>${data[i].status}</td>
+                                 
+                           </tr>`
+            table.innerHTML += row
+
+
+        }
+    }
+
+    function getPrecario(){
+
+        fetch('http://localhost:5010/precario/obterPrecos')
+            .then(response => response.json())
+            .then(data => buildTablePrecario(data));
+
+
+    }
+
+    function buildTablePrecario(data){
+        var table = document.getElementById('tabelaPrecario')
+
+        for (var i = 0; i < data.length; i++){
+            var row = `<tr>
+                                 <td>${data[i].Tempo}</td>
+                                 <td>${data[i].precoMinutos}</td>
+                           </tr>`
+            table.innerHTML += row
+
+
+        }
+    }
+
+    function getdatativos(){
+
+        fetch('http://localhost:5010/pe/ativos')
+            .then(response => response.json())
+            .then(data => buildTable2(data));
+
+
+    }
+
+
+    function buildTable2(data){
+        var table = document.getElementById('tabelasstatus')
+
+        for (var i = 0; i < data.length; i++){
+            var row = `<tr>
+                             <td>${data[i].Numero_parque}</td>
+                             <td>${data[i].status}</td>
+                             
+                       </tr>`
+            table.innerHTML += row
+
+
+        }
+    }
+
+    function getentradas(){
+
+        fetch(' http://localhost:5010/eecs/entrada')
+            .then(response => response.json())
+            .then(data => buildTable3(data));
+
+
+    }
+
+    function getsaidas(){
+
+        fetch(' http://localhost:5010/eecs/saida')
+            .then(response => response.json())
+            .then(data => buildTable4(data));
+
+
+    }
+
+
+    function buildTable3(data){
+        var table = document.getElementById('tabelaentradas')
+
+        for (var i = 0; i < data.length; i++){
+            var row = `<tr>
+                            <td>${data[i].Nparque}</td>
+                             <td>${data[i].matricula}</td>
+                             
+                             <td>${data[i].Created_date}</td>
+
+
+                       </tr>`
+            table.innerHTML += row
+
+
+        }
+    }
+
+    function buildTable4(data){
+        var table = document.getElementById('tabelasaidas')
+
+        for (var i = 0; i < data.length; i++){
+            var row = `<tr>
+                             <td>${data[i].matriculaSaidas}</td>
+                             <td>${data[i].nParqueSaida}</td>
+                             <td>${data[i].Created_date}</td>
+                       </tr>`
+            table.innerHTML += row
+
+
+        }
+    }
+
+
+
+
+
+
+
+</script>
+
+<script>
+    function filtertable() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function filtertable2() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput2");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table2");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function filtertable3() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput3");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table3");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        background-color: #2196F3;
+        padding: 10px;
+        grid-gap: 50px;
+        margin-top: 40px;
+    }
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .btn {
+        font-family: Hack, monospace;
+        background: #bbff00;
+        color: #1d1d1d;
+        cursor: pointer;
+        font-size: 2em;
+        padding: 1.5rem;
+        border: 0;
+        transition: all 0.5s;
+        border-radius: 10px;
+        width: auto;
+        position: relative;
+        min-width: 40px;
+        font-size: 16px;
+        margin-top: 13px;
+        font-weight: bold;
+    }
+    .btn:after {
+        content: "\f2sf6";
+        font-family: "Font Awesome 5 Pro";
+        font-weight: 400;
+        position: absolute;
+        left: 80%;
+        top: 54%;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+
+    }
+
+    .btn:hover {
+        background: #2b2bff;
+        transition: all 0.5s;
+        border-radius: 10px;
+        box-shadow: 0px 6px 15px #0000ff61;
+        padding: 1.5rem 3rem 1.5rem 1.5rem;
+        color: #ffffff;
+
+
+    }
+
+
+
+    .buttonClass {
+        font-size:15px;
+        font-family:Arial;
+        width:140px;
+        height:50px;
+        border-width:0px;
+        color:#fff;
+        border-color:#18ab29;
+        font-weight:bold;
+        border-top-right-radius:28px;
+        border-bottom-left-radius:28px;
+        text-shadow: 1px 1px 0px #2f6627;
+        background:rgba(74, 144, 226, 1);
+        margin-right: 15px;
+    }
+
+    .buttonClass:hover {
+        background: #243A73;
+    }
+
+</style>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Tabelas</title>
+</head>
+<body style=" background: dodgerblue linear-gradient(22deg, aqua, dodgerblue, deeppink) fixed;
+color: white; font: normal 20px/1.6 system-ui, sans-serif;">
+
+<div class="grid-container">
+  <div class="grid-item">
+    <table class="table table-striped">
+      <tr  class="bg-info" style="color:black; font-size: 20px;">
+        <th style="margin-left:30px;" >Nome</th>
+        <th style="margin-left:30px;" >Matricula</th>
+        <th>Avença</th>
+      </tr>
+      <tbody id="clienteAvenca" style="color:black; font-size: 15px; ">
+      </tbody>
+    </table>
+    <button class="btn" onclick="getClienteAvenca()">Ver Situação do Cliente</button>
+
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script>
+
+  function getClienteAvenca(){
+
+    fetch('http://localhost:5020/clientes/obterInfo')
+            .then(response => response.json())
+            .then(data => buildTable(data));
+
+
+  }
+
+
+  function buildTable(data){
+    var table = document.getElementById('clienteAvenca')
+
+    for (var i = 0; i < data.length; i++){
+      var row = `<tr>
+                                 <td>${data[i].nome}</td>
+                                 <td>${data[i].matriculaVeiculoPessoal}</td>
+                                 <td>${data[i].avenca}</td>
+
+                           </tr>`
+      table.innerHTML += row
+
+
+    }
+  }
+
+</script>
+
+
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .btn {
+    font-family: Hack, monospace;
+    background: #bbff00;
+    color: #1d1d1d;
+    cursor: pointer;
+    font-size: 2em;
+    padding: 1.5rem;
+    border: 0;
+    transition: all 0.5s;
+    border-radius: 10px;
+    width: auto;
+    position: relative;
+    min-width: 40px;
+    font-size: 16px;
+    margin-top: 13px;
+    font-weight: bold;
+  }
+  .btn:after {
+    content: "\f2sf6";
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 400;
+    position: absolute;
+    left: 80%;
+    top: 54%;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+
+  }
+
+  .btn:hover {
+    background: #2b2bff;
+    transition: all 0.5s;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px #0000ff61;
+    padding: 1.5rem 3rem 1.5rem 1.5rem;
+    color: #ffffff;
+
+
+  }
+
+
+</style>
+
+</body>
+</html>
